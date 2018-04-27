@@ -2,6 +2,7 @@ import pygame
 from globalData import *
 import BaseObject
 import Obj_Player
+import Obj_Redball
 
 pygame.init()
 size = (700, 500)
@@ -11,9 +12,10 @@ quit_attempt = False
 clock = pygame.time.Clock()
 
 player = Obj_Player.Obj_Player(screen)
+ball = Obj_Redball.Obj_Player(screen, 150, 150)
 NewObject(player)
-
-
+NewObject(ball)
+pygame.mouse.set_visible(0)
 while quit_attempt != True:
     for event in pygame.event.get():
         quit_attempt = False
@@ -34,9 +36,9 @@ while quit_attempt != True:
             keys[event.key % 255] = 0
         # this part can be use for other key event.
     screen.fill(BLACK)
-
     dt = clock.tick(30)
     for obj in listObject:
-        obj.Update()
+        obj.update()
+    player.Collision_Check(ball)
 
     pygame.display.flip()

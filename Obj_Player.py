@@ -5,14 +5,18 @@ from globalData import *
 class Obj_Player(BaseObject):
 
     def Start(self):
-        # set the sprite for the object
-        self.sprite = get_image('Sprite/ball.png')
-        # scale down the size of object.
-        self.sprite = pygame.transform.scale(self.sprite, self.spriteRect)
 
-    def Update(self):
-        self.mainScreen.blit(self.sprite, (self.x, self.y))
-        self.x = self.x+1
+        # set the sprite for the object
+        self.SetSrpite("ball.png")
+        # scale down the size of object.
+        print(self.rect)
+        # self.sprite = pygame.transform.rotate(self.sprite, 45)
+        # self.RotatteObject(45)
+
+    def update(self):
+        (self.rect[0], self.rect[1]) = MOUSE_EVENT[MOUSE_POSITION]
+        self.mainScreen.blit(self.sprite, (self.rect[0], self.rect[1]))
+
         if MOUSE_EVENT[MOUSE_LEFT_BUTTON]:
             print(MOUSE_EVENT[MOUSE_POSITION])
         if KEYBOARD[pygame.K_a]:
