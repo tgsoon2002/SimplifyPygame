@@ -48,6 +48,12 @@ of location and size of our sprite. It is array with 4 element. first two elemen
 >   self.rect[0] = 100
 >   self.rect[1] = 200
 
+To set sprite sheet you can either setup the list of rect and call "spritesheet" or call it with empty array and with specified column and row.
+## spritesheet(rects : array. col=1 : number, row=1: number) -> array of image
+>   spritesheet( [], 3, 2)    // this split the image to 3 by 2 grid of sprite
+>   spritesheet( [[0,0,4,6],[10,6,4,8]]):    // this will return two sprite with the specified rect
+
+
 # Rotate
 Sprite can be rotate by call *RotateObject* function and pass in angle
 ## RotateObject(number:angle) -> void

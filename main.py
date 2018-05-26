@@ -1,5 +1,5 @@
 import sys
-sys.path.insert(0,'Core')
+sys.path.insert(0, 'Core')
 
 import pygame
 from globalData import *
@@ -35,7 +35,8 @@ while quit_attempt != True:
             keys[event.key % 255] = 0
         # this part can be use for other key event.
     screen.fill(BLACK)
-    dt = clock.tick(30)
+    gameTime[0] = clock.tick(30)
+    gameTime[1] += gameTime[0]
     for obj in listObject:
         obj.Update()
         if obj.sprite:
